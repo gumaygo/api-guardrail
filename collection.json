@@ -1,0 +1,53 @@
+{
+	"info": {
+		"_postman_id": "api-guardrail-001",
+		"name": "API Guardrail Suite",
+		"description": "API Test Collection for Order Service",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Create Order Success",
+			"request": {
+				"method": "POST",
+				"header": [
+					{ "key": "Content-Type", "value": "application/json" },
+					{ "key": "Authorization", "value": "Bearer {{token}}" }
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"userId\": \"user_123\",\n  \"items\": [{ \"productId\": \"p_001\", \"quantity\": 2, \"price\": 50.5 }]\n}"
+				},
+				"url": {
+					"raw": "{{BASE_URL}}/orders",
+					"host": ["{{BASE_URL}}"],
+					"path": ["orders"]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Order Negative (Invalid Quantity)",
+			"request": {
+				"method": "POST",
+				"header": [
+					{ "key": "Content-Type", "value": "application/json" }
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"userId\": \"user_123\",\n  \"items\": [{ \"productId\": \"p_001\", \"quantity\": -5, \"price\": 50.5 }]\n}"
+				},
+				"url": {
+					"raw": "{{BASE_URL}}/orders",
+					"host": ["{{BASE_URL}}"],
+					"path": ["orders"]
+				}
+			},
+			"response": []
+		}
+	],
+	"variable": [
+		{ "key": "BASE_URL", "value": "https://api.example.com/v1" },
+		{ "key": "token", "value": "your_jwt_here" }
+	]
+}

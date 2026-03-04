@@ -1,59 +1,44 @@
-# api-guardrail
+# API Guardrail Framework
 
-Automated contract and reliability testing suite for backend services. This project focuses on enforcing data integrity between microservices using schema validation and performance thresholds.
+A professional API testing framework built with **Jest**, **Axios**, and **Zod** for high-integrity contract validation.
 
-## Overview
-In distributed systems, undocumented API changes can break downstream consumers. This suite ensures that every response matches a strictly defined contract (Zod schemas) and meets performance requirements (k6) before being deployed.
+## 🚀 Features
+- **Strict Contract Testing**: Powered by Zod for schema-level validation.
+- **Factory Pattern**: Centralized data generation with Faker.js.
+- **Resilient Client**: Axios-based client with auto-retry and interceptors.
+- **Semantic Assertions**: Custom Jest matchers (`toMatchSchema`).
+- **Visual Reporting**: Automatic HTML report generation.
+- **Security Testing**: Integrated JWT utility for auth simulations.
 
-## Core Features
-- **Contract Enforcement**: Uses Zod to validate types, formats (UUID, DateTime), and mandatory fields in API responses.
-- **Negative Testing**: Automated suites for validating 4xx error handling (Unauthorized, Bad Request).
-- **Performance Baselines**: Load testing scripts to verify P95 latency thresholds (< 500ms).
-- **CI/CD Ready**: Designed to be integrated into any pipeline as a quality gate.
+## 📦 Getting Started
 
-## Tech Stack
-- **Framework**: Jest
-- **Client**: Supertest
-- **Validation**: Zod
-- **Load Testing**: k6
-- **Language**: Node.js (CommonJS)
+1. **Install Dependencies**:
+   ```bash
+   npm install
+   ```
 
-## Setup
-```bash
-git clone https://github.com/gumaygo/api-guardrail.git
-cd api-guardrail
-npm install
-```
+2. **Configure Environment**:
+   ```bash
+   cp .env.example .env
+   # Update variables in .env as needed
+   ```
 
-## Usage
+3. **Run Tests**:
+   - Standard: `npm test`
+   - With HTML Report: `npm run test:report`
+   - Load Test: `npm run load-test`
 
-### Functional & Contract Tests
-Run Jest to validate API logic and data structures:
-```bash
-npm test
-```
+## 📂 Project Structure
+- `src/clients/`: Core API client configuration.
+- `src/factories/`: Dynamic test data generation.
+- `src/schemas/`: Zod schemas for API contracts.
+- `src/utils/`: Helper utilities (Auth, etc.).
+- `tests/`: End-to-end and integration test suites.
+- `docs/reports/`: Generated test results (Auto-ignored by git).
+- `logs/`: Runtime logs for debugging.
 
-### Performance Testing
-Execute load tests (requires k6 installed):
-```bash
-k6 run scripts/load-test.js
-```
+## 📜 Collection
+Import `collection.json` to **Postman** for manual debugging.
 
-## Project Structure
-- `src/schemas/`: Centralized Zod contracts (Source of Truth).
-- `tests/`: Integration and regression test suites.
-- `scripts/`: k6 load testing configurations.
-- `docs/`: Technical documentation and benchmarks.
-
-## Example Contract
-```javascript
-const OrderSchema = z.object({
-  id: z.string().uuid(),
-  totalPrice: z.number().positive(),
-  status: z.enum(['pending', 'paid', 'cancelled']),
-  createdAt: z.string().datetime()
-});
-```
-
-## License
-MIT
+---
+*Built for Scalability and Integrity.*
