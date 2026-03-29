@@ -1,7 +1,7 @@
 {
   "name": "api-guardrail",
   "version": "1.0.0",
-  "description": "",
+  "description": "API testing framework with contract validation, HTML reports, and load testing.",
   "main": "index.js",
   "scripts": {
     "test": "jest",
@@ -22,7 +22,15 @@
       ]
     ]
   },
-  "keywords": [],
+  "keywords": [
+    "qa-automation",
+    "api-testing",
+    "contract-testing",
+    "jest",
+    "zod",
+    "nodejs",
+    "load-testing"
+  ],
   "author": "",
   "license": "ISC",
   "type": "commonjs",

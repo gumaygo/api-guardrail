@@ -1,7 +1,12 @@
+const fs = require('fs');
+const path = require('path');
 const axios = require('axios');
 const axiosRetry = require('axios-retry').default;
 const winston = require('winston');
-require('dotenv').config();
+require('dotenv').config({ quiet: true });
+
+const logsDir = path.resolve(__dirname, '../../logs');
+fs.mkdirSync(logsDir, { recursive: true });
 
 const logger = winston.createLogger({
   level: 'info',
@@ -12,7 +17,7 @@ const logger = winston.createLogger({
     })
   ),
   transports: [
-    new winston.transports.File({ filename: 'logs/api-test.log' }),
+    new winston.transports.File({ filename: path.join(logsDir, 'api-test.log') }),
     new winston.transports.Console()
   ]
 });
