@@ -3,11 +3,11 @@ const { faker } = require('@faker-js/faker');
 class OrderFactory {
   static createRandomPayload() {
     return {
-      userId: faker.datatype.uuid(),
+      userId: faker.string.uuid(),
       items: [
         { 
-          productId: faker.datatype.uuid(), 
-          quantity: faker.datatype.number({ min: 1, max: 10 }), 
+          productId: faker.string.uuid(), 
+          quantity: faker.number.int({ min: 1, max: 10 }), 
           price: parseFloat(faker.commerce.price())
         }
       ]
@@ -16,7 +16,7 @@ class OrderFactory {
 
   static createMockResponse(payload) {
     return {
-      id: faker.datatype.uuid(),
+      id: faker.string.uuid(),
       userId: payload.userId,
       items: payload.items,
       totalPrice: payload.items.reduce((sum, item) => sum + (item.price * item.quantity), 0),

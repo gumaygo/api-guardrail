@@ -1,6 +1,6 @@
 {
   "name": "api-guardrail",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "API testing framework with contract validation, HTML reports, and load testing.",
   "main": "index.js",
   "scripts": {
@@ -31,20 +31,19 @@
     "nodejs",
     "load-testing"
   ],
-  "author": "",
-  "license": "ISC",
+  "author": "gumaygo",
+  "license": "MIT",
   "type": "commonjs",
   "dependencies": {
     "axios": "^1.13.6",
     "axios-retry": "^4.5.0",
     "chalk": "^4.1.2",
     "jest": "^30.2.0",
-    "supertest": "^7.2.2",
     "winston": "^3.19.0",
     "zod": "^4.3.6"
   },
   "devDependencies": {
-    "@faker-js/faker": "^7.6.0",
+    "@faker-js/faker": "^9.0.0",
     "dotenv": "^17.3.1",
     "jest-html-reporters": "^3.1.7",
     "jsonwebtoken": "^9.0.3"
